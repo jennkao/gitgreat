@@ -30,7 +30,7 @@ eventRouter.route('/')
   .post(controllers.addEvent)
   .get(controllers.retrieveEvents)
 
-eventRouter.route('/:eventId/itemList')
+eventRouter.route('/:eventId/items')
   .post(controllers.addItems)
   .get(controllers.retrieveItems)
 

@@ -28,7 +28,7 @@ class WhatToBring extends React.Component {
     };
     $.ajax({
       method: 'GET',
-      url: `/events/${eventId}/itemList`,
+      url: `/events/${eventId}/items`,
       success: successHandler.bind(this)
     });
   }
@@ -36,6 +36,7 @@ class WhatToBring extends React.Component {
   handleSubmit(event) {
     //The event name is passed along to the server via query parameters 
     //so that we can post to the itemlistTable associated with a specific event
+    event.preventDefault();
     var item = {
       item: this.state.currentItem,
       cost: this.state.currentCost,
@@ -47,12 +48,11 @@ class WhatToBring extends React.Component {
     var eventId = this.props.featuredEvent.id;
     $.ajax({
       method: 'POST',
-      url: `/events/${eventId}/itemList`,
+      url: `/events/${eventId}/items`,
       data: JSON.stringify(item),
       contentType: 'application/json',
       success: successHandler.bind(this)
     });
-    event.preventDefault();
   }
 
   handleItemChange(event) {
